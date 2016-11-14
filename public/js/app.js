@@ -92,16 +92,19 @@ angular.module("gamesApp", ['ngRoute'])
         }
     })
     .controller("GamePlayController", function($scope, $location, Games) {
-
        $scope.logTextArea = "Starting...\n";
-        var socket = io();
-        socket.on('time', function(timeString) {
+        $scope.socket = io();
+        $scope.socket.on('time', function(timeString) {
             $scope.$apply(function () {
                 $scope.logTextArea += timeString + "\n";
             });
             console.log("msg: " + timeString);
         });
 
+        $scope.sendMsg = function() {
+            //socket.emit('time', $scope.message);
+            $scope.socket.emit('time', $scope.sendmessage);
+        };
 
 
 

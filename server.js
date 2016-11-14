@@ -39,6 +39,12 @@ mongodb.MongoClient.connect(dbConnection, function (err, database) {
 
   io.on('connection', function(socket) {
     console.log('Client connected');
+
+    socket.on('time', function (msg) {
+      console.log(msg)
+      socket.emit('time', msg);
+    });
+
     socket.on('disconnect', function() { console.log('Client disconnected')}
     )});
 
