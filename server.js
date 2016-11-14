@@ -5,16 +5,13 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = "games";
-var wsPort = 8889;
-
-var WebSocketServer = require('ws').Server;
-var wss = new WebSocketServer({ port: wsPort });
 
 var dbConnection = process.env.MONGODB_URI || 'mongodb://user:password@ds045757.mlab.com:45757/heroku_zdz94r70';
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
+
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
@@ -30,12 +27,31 @@ mongodb.MongoClient.connect(dbConnection, function (err, database) {
   db = database;
   console.log("Database connection ready");
 
-  // Initialize the app.
+// Initialize the app.
   var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
   });
+
+  var socketIO = require('socket.io');
+  var io = socketIO(server);
+
+
+  io.on('connection', function(socket) {
+    console.log('Client connected');
+    socket.on('disconnect', function() { console.log('Client disconnected')}
+    )});
+
+  setInterval(function() {
+    io.emit('time', "SERVER: " + new Date().toTimeString())
+  }, 10000);
+
+
 });
+
+
+
+
 
 // CONTACTS API ROUTES BELOW
 
@@ -55,7 +71,7 @@ app.get("/games", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to get games.");
     } else {
-      res.status(200).json(docs);  
+      res.status(200).json(docs);
     }
   });
 });
@@ -122,26 +138,3 @@ app.delete("/games/:id", function(req, res) {
 ///////////////////////////////////////////////
 // WEBSOCKETS SECTION TO BE BROKEN OUT INTO ITS OWN FILE
 ///////////////////////////////////////////////
-
-//Wire its handlers
-wss.on('connection', function (ws) {
-  //Show the connection has been established in the console
-  console.log("\nWS Connection established:");
-  console.log(ws.upgradeReq.headers);
-
-  //Wire the event handlers
-  ws.on('message', function (data) {
-    //Show the message object in the console
-    var message = JSON.parse(data);
-    console.log("\nWS Message received from client:");
-    console.log(message);
-
-    //Let the client know something was received
-    var messageback = {
-      source: "WebAppsNodeJs Application (server)",
-      port: wsPort,
-      message:"Client Message Received!"
-    }
-    ws.send(JSON.stringify(messageback));
-  });
-});

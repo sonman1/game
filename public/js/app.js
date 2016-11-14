@@ -93,35 +93,16 @@ angular.module("gamesApp", ['ngRoute'])
     })
     .controller("GamePlayController", function($scope, $location, Games) {
 
-        $scope.ws;
-        $scope.logTextArea = "";
+       $scope.logTextArea = "Starting...\n";
+        var socket = io();
+        socket.on('time', function(timeString) {
+            $scope.$apply(function () {
+                $scope.logTextArea += timeString + "\n";
+            });
+            console.log("msg: " + timeString);
+        });
 
-        $scope.connect = function() {
 
-            //Open the connection to the server
-            $scope.endpoint = "ws://" + $location.host() + ":8889/";
-            $scope.ws = new WebSocket($scope.endpoint);
-
-            $scope.ws.onopen = function(ev) {
-                $scope.logTextArea += "WS connection established: " + ($scope.ws.readyState === $scope.ws.OPEN) + "\n\n";
-            }
-
-            //Listen for responses from the server
-            $scope.ws.onmessage = function (ev) {
-                $scope.logTextArea += "WS message received from server:\n";
-                $scope.logTextArea += ev.data;
-                console.log(ev.data);
-            };
-        }
-
-        $scope.sendMessage = function() {
-            $scope.data = {
-                source: "ClientWebSocket Application (client)",
-                url: document.URL
-            }
-
-            $scope.ws.send(JSON.stringify($scope.data));
-        }
 
 
     })
