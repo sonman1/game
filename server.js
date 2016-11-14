@@ -27,7 +27,7 @@ mongodb.MongoClient.connect(dbConnection, function (err, database) {
   db = database;
   console.log("Database connection ready");
 
-// Initialize the app.
+// Initialize the app.git stat
   var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
