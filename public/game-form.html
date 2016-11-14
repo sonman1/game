@@ -1,0 +1,17 @@
+<div class="row" ng-hide="game._id">
+  <div class="col-md-6">
+      <h2>Create new game</h2>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <p>
+      <label>Game Name</label>
+      <input id="name" class="form-control" type="text" ng-model="game.gameName" required>
+    </p>
+    <p>
+      <button style="margin-top:20px" class="btn btn-default" ng-click="saveGame(game)">Save</button>
+      <button style="margin-top:20px" class="btn btn-default" ng-click="back()">Back</button>
+    </p>
+  </div>
+</div>

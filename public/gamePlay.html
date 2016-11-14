@@ -1,0 +1,30 @@
+<div class = "row">
+  <div class="col-md-6">
+    <h2>
+      Game Name Here
+    </h2>
+    This is where the Clueless game interface will go. DIVs and all.
+
+    <div id="gameRoom" style="width: 400px; height: 400px; border: 1px solid black; ">
+
+      <textarea ng-bind="logTextArea" style="width: 100%; height:400px;"></textarea>
+
+    </div>
+
+    <div>
+      <button ng-click="connect()" style="width: 100px;">Connect</button>
+      <label>- Connect to the WebSocket server</label>
+    </div>
+    <br/>
+    <div>
+      <button ng-click="sendMessage()" style="width: 100px;">Send Data</button>
+      <label>- Send some test data</label>
+    </div>
+  </div>
+</div>
+<!-- Contact form -->
+<div ng-include="gameFormUrl">
+</div>
+
+
+
