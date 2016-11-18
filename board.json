@@ -1,0 +1,39 @@
+{  
+	"version": "1.0.0.1",
+	"session": {
+		"id": "",
+		"board": "",
+		"player": ""
+	},
+	"board": {
+		"id": "",
+		"name": "",
+		"spaces": {
+			"id": "",
+			"name": "",
+			"occupied": "",
+			"accesses": {
+				"id": "",
+				"name": ""	
+			}
+		},
+		"acceptingNewPlayers": "",
+		"currentPlayer": "",
+		"secretCards": "",
+		"winner": ""
+	},
+	"players": {
+		"id": "",
+		"name": "",
+		"done": "",
+		"cards": {
+			"id": "",
+			"name": ""	
+		}
+	},
+	"weapons": {
+		"id": "",
+		"name": "",
+		"location": ""
+		}
+}
