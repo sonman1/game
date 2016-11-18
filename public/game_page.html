@@ -1,0 +1,566 @@
+<html>
+
+<head>
+
+	<style>
+
+		body {
+			background-color: #ccffcc;
+		}
+
+		.board {
+			position: absolute;
+			top: 2.5%;
+			left: 1.5%;
+			width: 70%;
+			height: 95%;
+			border: 1px solid black;
+			background-color: #ffffcc;
+		}
+
+		.playerCards {
+			position: absolute;
+			top: 2.5%;
+			left: 73%;
+			width: 25%;
+			height: 40%;
+			border: 1px solid black;
+			background-color: #ffffcc;
+		}
+
+		.dashboard {
+			position: absolute;
+			top: 45%;
+			left: 73%;
+			width: 25%;
+			height: 35%;
+			border: 1px solid black;
+			background-color: #ffffcc;
+		}
+
+		.console {
+			position: absolute;
+			top: 82.5%;
+			left: 73%;
+			width: 25%;
+			height: 15%;
+			border: 1px solid black;
+			background-color: #ffffcc;
+		}
+
+		.study {
+			position: absolute;
+			top: 5%;
+			left: 5%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			background-color: #b0e0e6;
+		}
+
+		.hall {
+			position: absolute;
+			top: 5%;
+			left: 40%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			text-align: center;
+			background-color: #b0e0e6;
+		}
+
+		.lounge {
+			position: absolute;
+			top: 5%;
+			left: 75%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			text-align: right;
+			background-color: #b0e0e6;
+		}
+
+		.library {
+			position: absolute;
+			top: 40%;
+			left: 5%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			background-color: #b0e0e6;
+		}
+
+		.billiard {
+			position: absolute;
+			top: 40%;
+			left: 40%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			text-align: center;
+			background-color: #b0e0e6;
+		}
+
+		.dining {
+			position: absolute;
+			top: 40%;
+			left: 75%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			text-align: right;
+			background-color: #b0e0e6;
+		}
+
+		.conservatory {
+			position: absolute;
+			top: 75%;
+			left: 5%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			background-color: #b0e0e6;
+		}
+
+		.ballroom {
+			position: absolute;
+			top: 75%;
+			left: 40%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			text-align: center;
+			background-color: #b0e0e6;
+		}
+
+		.kitchen {
+			position: absolute;
+			top: 75%;
+			left: 75%;
+			width: 20%;
+			height: 20%;
+			border: 1px solid black;
+			text-align: right;
+			background-color: #b0e0e6;
+		}
+
+		.secretPassageStudy {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 30%;
+			height: 30%;
+			border: 1px solid black;
+			background-color: #b0e0aa;
+		}
+
+		.secretPassageLounge {
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width: 30%;
+			height: 30%;
+			border: 1px solid black;
+			background-color: #b0e0aa;
+		}
+
+		.secretPassageConservatory {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			width: 30%;
+			height: 30%;
+			border: 1px solid black;
+			background-color: #b0e0aa;
+		}
+
+		.secretPassageKitchen {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 30%;
+			height: 30%;
+			border: 1px solid black;
+			background-color: #b0e0aa;
+		}
+
+		.studyHall {
+			position: absolute;
+			top: 12.5%;
+			left: 25%;
+			width: 15%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.hallLounge {
+			position: absolute;
+			top: 12.5%;
+			left: 60%;
+			width: 15%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.libraryBilliard {
+			position: absolute;
+			top: 47.5%;
+			left: 25%;
+			width: 15%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.billiardDining {
+			position: absolute;
+			top: 47.5%;
+			left: 60%;
+			width: 15%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.conservatoryBallroom {
+			position: absolute;
+			top: 82.5%;
+			left: 25%;
+			width: 15%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.ballroomKitchen {
+			position: absolute;
+			top: 82.5%;
+			left: 60%;
+			width: 15%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.studyLibrary {
+			position: absolute;
+			top: 25%;
+			left: 12.5%;
+			width: 5%;
+			height: 15%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.libraryConservatory {
+			position: absolute;
+			top: 60%;
+			left: 12.5%;
+			width: 5%;
+			height: 15%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.hallBilliard {
+			position: absolute;
+			top: 25%;
+			left: 47.5%;
+			width: 5%;
+			height: 15%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.billiardBallroom {
+			position: absolute;
+			top: 60%;
+			left: 47.5%;
+			width: 5%;
+			height: 15%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.loungeDining {
+			position: absolute;
+			top: 25%;
+			left: 82.5%;
+			width: 5%;
+			height: 15%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.diningKitchen {
+			position: absolute;
+			top: 60%;
+			left: 82.5%;
+			width: 5%;
+			height: 15%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #cecece;
+		}
+
+		.initialScarlet {
+			position: absolute;
+			top: 7.5%;
+			left: 65%;
+			width: 5%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #ababab;
+		}
+
+		.initialMustard {
+			position: absolute;
+			top: 30%;
+			left: 87.5%;
+			width: 5%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #ababab;
+		}
+
+		.initialWhite {
+			position: absolute;
+			top: 87.5%;
+			left: 65%;
+			width: 5%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #ababab;
+		}
+
+		.initialGreen {
+			position: absolute;
+			top: 87.5%;
+			left: 30%;
+			width: 5%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #ababab;
+		}
+
+
+		.initialPeacock {
+			position: absolute;
+			top: 65%;
+			left: 7.5%;
+			width: 5%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #ababab;
+		}
+
+		.initialPlum {
+			position: absolute;
+			top: 30%;
+			left: 7.5%;
+			width: 5%;
+			height: 5%;
+			border: 1px solid black;
+			z-index: 1;
+			background-color: #ababab;
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<div class="board">
+
+		<div class="study">
+			Study
+			<div class="secretPassageStudy">
+			</div>
+		</div>
+
+		<div class="hall">
+			Hall
+		</div>
+
+		<div class="lounge">
+			Lounge
+			<div class="secretPassageLounge">
+			</div>
+		</div>
+
+		<div class="library">
+			Library
+		</div>
+
+		<div class="billiard">
+			Billiard Room
+		</div>
+
+		<div class="dining">
+			Dining Room
+		</div>
+
+		<div class="conservatory">
+			Conservatory
+			<div class="secretPassageConservatory">
+			</div>
+		</div>
+
+		<div class="ballroom">
+			Ballroom
+		</div>
+
+		<div class="kitchen">
+			Kitchen
+			<div class="secretPassageKitchen">
+			</div>
+		</div>
+
+		<div class="studyHall">
+		</div>
+
+		<div class="hallLounge">
+		</div>
+
+		<div class="libraryBilliard">
+		</div>
+
+		<div class="billiardDining">
+		</div>
+
+		<div class="conservatoryBallroom">
+		</div>
+
+		<div class="ballroomKitchen">
+		</div>
+
+		<div class="studyLibrary">
+		</div>
+
+		<div class="libraryConservatory">
+		</div>
+
+		<div class="hallBilliard">
+		</div>
+
+		<div class="billiardBallroom">
+		</div>
+
+		<div class="loungeDining">
+		</div>
+
+		<div class="diningKitchen">
+		</div>
+
+		<div class="initialScarlet">
+		</div>
+
+		<div class="initialMustard">
+		</div>
+
+		<div class="initialWhite">
+		</div>
+
+		<div class="initialGreen">
+		</div>
+
+		<div class="initialPeacock">
+		</div>
+
+		<div class="initialPlum">
+		</div>
+
+	</div>
+
+	<div class="playerCards">
+		Your cards:
+	</div>
+
+	<div class="dashboard">
+		To make a suggestion or accusation, select the following:
+		<div>
+			Room:
+			<select>
+				<option value="">Select a room</option>
+			 	<option value="study">Study</option>
+			 	<option value="hall">Hall</option>
+			 	<option value="lounge">Lounge</option>
+			 	<option value="library">Library</option>
+			 	<option value="billiard">Billiard Room</option>
+			 	<option value="dining">Dining Room</option>
+			 	<option value="conservartory">Conservatory</option>
+			 	<option value="ballroom">Ballroom</option>
+			 	<option value="kitchen">Kitchen</option>
+			</select>
+		</div>
+		<div>
+			Suspect:
+			<select>
+			 	<option value="">Select a suspect</option>
+			 	<option value="">Miss Scarlet</option>
+			 	<option value="">Col. Mustard</option>
+			 	<option value="">Mrs. White</option>
+			 	<option value="">Mr. Green</option>
+			 	<option value="">Mrs. Peacok</option>
+			 	<option value="">Prof. Plum</option>
+			</select>
+		</div>
+		<div>
+			Weapon:
+			<select>
+			 	<option value="">Select a weapon</option>
+			 	<option value="candlestick">Candlestick</option>
+			 	<option value="leadPipe">Lead Pipe</option>
+			 	<option value="knife">Knife</option>
+			 	<option value="revolver">Revolver</option>
+			 	<option value="rope">Rope</option>
+			 	<option value="wrench">Wrench</option>
+			</select>
+		</div>
+		<div>
+			<input type="radio" name="actionType" value="accusation"> Accusation<br>
+			<input type="radio" name="actionType" value="suggestion" checked> Suggestion
+		</div>
+		<div>
+			<input type="submit" value="Make Accusation/Suggest">
+		</div>
+
+		<div>
+			You could also move to:
+		</div>
+
+		<div>
+			<input type="submit" value="Space Option 1">
+			<input type="submit" value="Space Option 2">
+			<input type="submit" value="Space Option 3">
+			<input type="submit" value="Space Option 4">
+		</div>
+
+	</div>
+	<div class="console">
+		Here is the game status:
+	</div>
+
+</body>
+
+
+</html>
